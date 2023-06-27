@@ -16,11 +16,11 @@ export function getInterviewersForDay(state, day) {
   let foundInterviewer = "";
   let finalInterviewersArr = [];
   for(const dayIndex in state.days) {
-    console.log(state.days[dayIndex].name)
+    // console.log(state.days[dayIndex].name)
     if (state.days[dayIndex].name === day) {
-      console.log("hitting if statement")
+      // console.log("hitting if statement")
       foundInterviewer = state.days[dayIndex].interviewers;
-      console.log(foundInterviewer);
+      // console.log(foundInterviewer);
     }
   }
   for(const interviewerDetails of foundInterviewer) {

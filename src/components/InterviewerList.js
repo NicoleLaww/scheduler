@@ -8,6 +8,7 @@ const {interviewers, value, onChange} = props;
 
 const interviewersItems = interviewers.map((interviewerObj) => (
   <InterviewerListItem
+    key={interviewerObj.id}
     id={interviewerObj.id}
     name={interviewerObj.name}
     avatar={interviewerObj.avatar}

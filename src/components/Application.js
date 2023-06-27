@@ -17,13 +17,34 @@ const dailyAppointments = getAppointmentsForDay(state, state.day);
 const dailyInterviewers = getInterviewersForDay(state, state.day);
 const setDay = day => setState({ ...state, day });
 
+const bookInterview = function(id, interview) {
+return axios.put(`/api/appointments/${id}`, {interview})
+  .then(res => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    });
+    console.log("Successfully booked");
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
 useEffect(() => {
   Promise.all([
     axios.get("/api/days"),
     axios.get("api/appointments"),
     axios.get("api/interviewers")
   ]).then((all) => {
-    console.log(all[2].data)
     setState(prev => ({
       ...prev, 
       days: all[0].data, 
@@ -34,8 +55,6 @@ useEffect(() => {
       console.log(error);
     });
 }, []);
-
-console.log("dailyInterviewers", dailyInterviewers);
 
   return (
     <main className="layout">
@@ -69,6 +88,7 @@ console.log("dailyInterviewers", dailyInterviewers);
             {...appointment}
             interviewers={dailyInterviewers}
             interview={interview}
+            bookInterview={bookInterview}
           />
         );
       })}
