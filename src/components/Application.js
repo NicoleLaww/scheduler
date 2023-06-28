@@ -60,6 +60,7 @@ const cancelInterview = function(id) {
       console.log(err);
     })
 }
+
 useEffect(() => {
   Promise.all([
     axios.get("/api/days"),
