@@ -34,9 +34,9 @@ return axios.put(`/api/appointments/${id}`, {interview})
     });
     console.log("Successfully booked");
   })
-  .catch(err => {
-    console.log(err);
-  })
+  // .catch(err => {
+  //   console.log(err);
+  // })
 }
 
 const cancelInterview = function(id) {
@@ -56,9 +56,9 @@ const cancelInterview = function(id) {
       })
       console.log("Deleted")
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    // .catch((err) => {
+    //   console.log(err);
+    // })
 }
 
 useEffect(() => {
