@@ -12,6 +12,18 @@ const [state, setState] = useState({
 
 const setDay = day => setState({ ...state, day });
 
+const updateSpots = function(appointments) {
+  const updatedDays = state.days.map((day) => {
+  const emptySpots = day.appointments.filter((appointment) => {
+    return !appointments[appointment].interview
+  });  
+  console.log(emptySpots.length);
+  const spots = emptySpots.length
+  return {...day, spots}
+})
+  setState(prev => ({...prev, days: updatedDays}));
+};
+
 const bookInterview = function(id, interview) {
 return axios.put(`/api/appointments/${id}`, {interview})
   .then(() => {
@@ -28,6 +40,7 @@ return axios.put(`/api/appointments/${id}`, {interview})
       appointments
     });
     console.log("Successfully booked");
+    updateSpots(appointments);
   })
 }
 
@@ -37,6 +50,7 @@ useEffect(() => {
     axios.get("api/appointments"),
     axios.get("api/interviewers")
   ]).then((all) => {
+    console.log(all);
     setState(prev => ({
       ...prev, 
       days: all[0].data, 
@@ -64,6 +78,7 @@ const cancelInterview = function(id) {
         appointments
       })
       console.log("Deleted")
+      updateSpots(appointments);
     })
 
 

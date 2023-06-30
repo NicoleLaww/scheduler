@@ -16,11 +16,8 @@ export function getInterviewersForDay(state, day) {
   let foundInterviewer = "";
   let finalInterviewersArr = [];
   for(const dayIndex in state.days) {
-    // console.log(state.days[dayIndex].name)
     if (state.days[dayIndex].name === day) {
-      // console.log("hitting if statement")
       foundInterviewer = state.days[dayIndex].interviewers;
-      // console.log(foundInterviewer);
     }
   }
   for(const interviewerDetails of foundInterviewer) {
@@ -30,7 +27,6 @@ export function getInterviewersForDay(state, day) {
 }
 
 export function getInterview(state, interview) {
-
   if (interview === null) {
     return null;
   }
@@ -38,6 +34,12 @@ export function getInterview(state, interview) {
   const { student, interviewer } = interview;
   const interviewerData = state.interviewers[interviewer];
 
+  if (interviewerData === undefined) {
+    console.log("interview", interview);
+    console.log("interviewer", interviewer);
+    console.log("HERE", interviewerData);
+  }
+  
   return {
     student,
     interviewer: {
