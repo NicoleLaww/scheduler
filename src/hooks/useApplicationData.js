@@ -17,7 +17,7 @@ const updateSpots = function(appointments) {
   const emptySpots = day.appointments.filter((appointment) => {
     return !appointments[appointment].interview
   });  
-  console.log(emptySpots.length);
+  // console.log(emptySpots.length);
   const spots = emptySpots.length
   return {...day, spots}
 })
@@ -47,10 +47,9 @@ return axios.put(`/api/appointments/${id}`, {interview})
 useEffect(() => {
   Promise.all([
     axios.get("/api/days"),
-    axios.get("api/appointments"),
-    axios.get("api/interviewers")
+    axios.get("/api/appointments"),
+    axios.get("/api/interviewers")
   ]).then((all) => {
-    console.log(all);
     setState(prev => ({
       ...prev, 
       days: all[0].data, 
