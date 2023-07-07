@@ -11,8 +11,6 @@ import useVisualMode from "hooks/useVisualMode";
 
 export default function Appointment(props) {
   
-  // console.log(props);
-  // console.log(props.interview);
 
   const SHOW = "SHOW";
   const EMPTY = "EMPTY";

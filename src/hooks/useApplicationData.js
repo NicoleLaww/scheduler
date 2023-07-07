@@ -21,6 +21,8 @@ const updateSpots = function(appointments) {
   const spots = emptySpots.length
   return {...day, spots}
 })
+  console.log(updatedDays);
+  // return updatedDays;
   setState(prev => ({...prev, days: updatedDays}));
 };
 
@@ -71,10 +73,13 @@ const cancelInterview = function(id) {
       const appointments = {
         ...state.appointments, 
         [id]: appointment
-      }; 
+      };
+      // const days = updateSpots(appointments); 
+      // console.log(days);
       setState({
         ...state, 
-        appointments
+        appointments, 
+        // days
       })
       console.log("Deleted")
       updateSpots(appointments);
