@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getByText, render, cleanup, waitForElement, fireEvent, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, getByClassName} from "@testing-library/react";
+import { getByText, render, cleanup, waitForElement, fireEvent, getAllByTestId, getByAltText, getByPlaceholderText, queryByText} from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -17,7 +17,7 @@ describe("Application", () => {
 
   });
 
-  it("load data, books an interview and reduces the spots remaining for th first day by 1", async () => {
+  it("loads data, books an interview and reduces the spots remaining for th first day by 1", async () => {
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
@@ -32,11 +32,17 @@ describe("Application", () => {
     });
 
     fireEvent.click(getByAltText(appointment, "Tori Malcolm"));
-
     fireEvent.click(getByText(appointment, "Save"));
 
-    console.log(prettyDOM(appointment));
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
+    await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
+    const days = getAllByTestId(container, "day")
+    const monday = days.find((day) => getByText(day, "Monday"))
+
+    expect(monday).toHaveTextContent("no spots remaining")
+  
   });
 
 });
