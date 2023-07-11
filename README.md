@@ -20,10 +20,10 @@ npm run storybook
 
 ## Screenshots 
 ### Without Any Actions/Homepage 
-!["Homepage"](https://github.com/NicoleLaww/scheduler/blob/master/docs/appointment-form.png?raw=true)
+!["Homepage"](https://github.com/NicoleLaww/scheduler/blob/master/docs/home.png?raw=true)
 
 ### Adding Appointment
-!["Adding Appointment"](https://github.com/NicoleLaww/scheduler/blob/master/docs/scheduler-home.png?raw=true)
+!["Adding Appointment"](https://github.com/NicoleLaww/scheduler/blob/master/docs/appointment-add-form.png?raw=true)
 
 ### Deletion Confirmation 
 !["Deletion Confirmation"](https://github.com/NicoleLaww/scheduler/blob/master/docs/appointment-deletion-confirmation.png?raw=true)
