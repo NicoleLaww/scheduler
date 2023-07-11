@@ -17,12 +17,9 @@ const updateSpots = function(appointments) {
   const emptySpots = day.appointments.filter((appointment) => {
     return !appointments[appointment].interview
   });  
-  // console.log(emptySpots.length);
   const spots = emptySpots.length
   return {...day, spots}
 })
-  console.log(updatedDays);
-  // return updatedDays;
   setState(prev => ({...prev, days: updatedDays}));
 };
 
@@ -41,7 +38,6 @@ return axios.put(`/api/appointments/${id}`, {interview})
       ...state,
       appointments
     });
-    console.log("Successfully booked");
     updateSpots(appointments);
   })
 }
@@ -74,14 +70,10 @@ const cancelInterview = function(id) {
         ...state.appointments, 
         [id]: appointment
       };
-      // const days = updateSpots(appointments); 
-      // console.log(days);
       setState({
         ...state, 
         appointments, 
-        // days
       })
-      console.log("Deleted")
       updateSpots(appointments);
     })
 

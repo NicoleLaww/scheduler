@@ -33,12 +33,6 @@ export function getInterview(state, interview) {
 
   const { student, interviewer } = interview;
   const interviewerData = state.interviewers[interviewer];
-
-  if (interviewerData === undefined) {
-    console.log("interview", interview);
-    console.log("interviewer", interviewer);
-    console.log("HERE", interviewerData);
-  }
   
   return {
     student,
